@@ -1,19 +1,11 @@
----
-name: Chore
-about: 코드 수정
-title: '[CHORE]'
-labels: ''
-assignees: ''
----
+## Summary
 
-## Description
+-   요약
 
-설명 작성
+## Describe your code
 
-## To - Do
+-   코드 설명
 
-1.
-2.
-3.
+## Checklist
 
-## ETC
+-   [ ] 리뷰어 등록

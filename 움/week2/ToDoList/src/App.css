@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 전체 화면 높이를 사용해서 가운데 정렬 */
+    margin: 0;
+}
+
+.todo-list {
+    padding: 20px;
+    width: 300px; /* 너비를 고정하여 중앙 배치 효과 */
+}
+
+.todo-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.todo-text {
+    display: flex;
+    gap: 5px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+input.input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex-grow: 1; /* 입력 필드가 가능한 공간을 채우도록 */
+}
+
+button.btn {
+    padding: 8px 16px;
+    background-color: #484848;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap; /* 버튼 텍스트가 줄바꿈되지 않도록 */
+}
+
+button.btn:hover {
+    background-color: #0056b3;
+}

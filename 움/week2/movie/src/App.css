@@ -1,0 +1,56 @@
+/* 전체 컨테이너 설정 */
+.movie-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* 한 줄에 10개의 칸을 생성 */
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+  }
+  
+  /* 각 영화 항목 스타일 */
+  .movie-item {
+    position: relative;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .movie-item:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* 마우스 올렸을 때 검정 배경 */
+    border-radius: 8px;
+  }
+  
+  /* 영화 포스터 스타일 */
+  .movie-poster {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1; /* 포스터를 위에 둠 */
+  }
+  
+  .movie-item:hover .movie-poster {
+    transform: scale(1.05); /* 호버 시 포스터 확대 */
+    opacity: 0.5; /* 포스터가 살짝 투명하게 처리되어 배경색이 보이도록 */
+  }
+  
+  /* 영화 제목 스타일 */
+  .movie-title {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0;
+    z-index: 2; /* 텍스트가 이미지 위에 표시되도록 */
+    transition: opacity 0.3s ease;
+  }
+  
+  /* 마우스 올렸을 때 영화 제목이 보이도록 설정 */
+  .movie-item:hover .movie-title {
+    opacity: 1;
+  }
+  

@@ -1,0 +1,38 @@
+.todolist {
+  text-align: center;
+}
+
+/* 전체 컨테이너 설정 */
+.container {
+  display: flex;
+  flex-direction: column; /* 자식 요소를 세로로 배치 */
+  align-items: center; /* 수평 중앙 정렬 */
+}
+
+/* 입력 필드 중앙 정렬 */
+.inputField {
+  font-style: italic;
+  width: 70%; /* 너비 설정 */
+  max-width: 500px; /* 최대 너비 설정 */
+  margin-left: auto; /* 왼쪽 마진 자동 */
+  margin-right: auto; /* 오른쪽 마진 자동 */
+}
+/* 해야 할 일, 해낸 일 글꼴  */
+.underline {
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.listContainer {
+  display: flex;
+  height: 300px; /* 전체 높이 설정 */
+}
+
+.box {
+  flex: 1; /* 각 영역이 같은 비율로 크기를 차지 */
+  margin: 10px;
+  text-decoration: underline;
+  margin-top: 0px;
+  background-color: #dedede;
+}

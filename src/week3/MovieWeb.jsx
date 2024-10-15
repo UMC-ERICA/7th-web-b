@@ -20,30 +20,25 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "movies",
-        element: <MoviesPage query="" />,
-      },
-      {
-        path: "movies/now-playing",
-        element: (
-          <MoviesPage query="now_playing" />
-        ),
-      },
-      {
-        path: "movies/popular",
-        element: <MoviesPage query="popular" />,
-      },
-      {
-        path: "movies/top-rated",
-        element: (
-          <MoviesPage query="top_rated" />
-        ),
-      },
-      {
-        path: "movies/up-coming",
-        element: (
-          <MoviesPage query="upcoming" />
-        ),
+        path: "movies", // movie로 변경
+        children: [
+          {
+            path: "now-playing",
+            element: <MoviesPage query="now_playing" />,
+          },
+          {
+            path: "popular",
+            element: <MoviesPage query="popular" />,
+          },
+          {
+            path: "top-rated",
+            element: <MoviesPage query="top_rated" />,
+          },
+          {
+            path: "up-coming",
+            element: <MoviesPage query="upcoming" />,
+          },
+        ],
       },
       {
         path: "login",

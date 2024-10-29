@@ -1,13 +1,16 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 const Card = ({ movie }) => {
   return (
     <StyledCard>
       {console.log(movie)}
-      <img
-        id={movie.id}
-        src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
-        alt={movie.title}
-      />
+      <Link to={`/movies/${movie.id}`}>
+        <img
+          id={movie.id}
+          src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
+          alt={movie.title}
+        />
+      </Link>
       <h5>{movie.title}</h5>
       <h6>{movie.release_date}</h6>
     </StyledCard>

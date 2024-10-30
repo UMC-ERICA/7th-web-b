@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-const Card = ({ movie }) => {
+const Card = ({ key, movie }) => {
   return (
     <StyledCard>
       {console.log(movie)}
@@ -9,6 +9,7 @@ const Card = ({ movie }) => {
           id={movie.id}
           src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
           alt={movie.title}
+          key={key}
         />
       </Link>
       <h5>{movie.title}</h5>

@@ -1,24 +1,17 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import unknownImage from "../assets/unknown.jpg";
-import axios from "axios";
+import useCustomFetch from "../hooks/useCustomFetch.js";
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
-  useEffect(() => {
-    const getMovie = async () => {
-      const response = await axios.get(
-        `${import.meta.env.VITE_TMDB_API_URL}/${id}?api_key=${
-          import.meta.env.VITE_TMDB_API_KEY
-        }&append_to_response=credits&language=ko-KR`
-      );
-      setMovie(response.data);
-    };
-    console.log(movie);
-    getMovie();
-  }, [id]);
+  const {
+    data: movie,
+    isLoading,
+    isError,
+  } = useCustomFetch(`/${id}?&append_to_response=credits&language=ko-KR`);
+  if (isLoading) return <div>로딩 중...</div>;
+  if (isError) return <div>에러 입니다.</div>;
   return (
     <>
       <StyledMovieDetailContainer>
@@ -27,23 +20,14 @@ const MovieDetail = () => {
             backgroundImage: `url(https://image.tmdb.org/t/p/original${movie?.backdrop_path})`,
           }}
         >
-          <h1 style={{ position: "absolute", top: "5%", left: "3%" }}>
-            {movie?.title}
-          </h1>
-          <h4 style={{ position: "absolute", top: "13%", left: "3%" }}>
-            평균 : {movie?.vote_average}
-          </h4>
-          <h4 style={{ position: "absolute", top: "17%", left: "3%" }}>
-            {movie?.release_date.slice(0, 4)}
-          </h4>
-          <h4 style={{ position: "absolute", top: "21%", left: "3%" }}>
-            {movie?.runtime}분
-          </h4>
+          <h1 style={{ top: "5%" }}>{movie?.title}</h1>
+          <h4 style={{ top: "13%" }}>평균 : {movie?.vote_average}</h4>
+          <h4 style={{ top: "17%" }}>{movie?.release_date.slice(0, 4)}</h4>
+          <h4 style={{ top: "21%" }}>{movie?.runtime}분</h4>
           <div
             style={{
               position: "absolute",
               top: "28%",
-              left: "3%",
               fontStyle: "italic",
               fontSize: "1.5rem",
             }}
@@ -116,6 +100,14 @@ const StyledMovieDetailImage = styled.div`
   background-size: cover;
   object-fit: cover;
   border-radius: 10px;
+  h1 {
+    position: absolute;
+    left: 3%;
+  }
+  h4 {
+    position: absolute;
+    left: 3%;
+  }
 `;
 const StyledMovieDetailOverview = styled.div`
   position: absolute;

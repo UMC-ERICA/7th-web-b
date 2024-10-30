@@ -1,31 +1,32 @@
 import Card from "../components/card.jsx";
 import { useEffect, useState } from "react";
 import * as S from "../movies.style.js";
-import axios from "axios";
+import useCustomFetch from "../hooks/useCustomFetch.js";
 
 const MoviesPage = ({ query }) => {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    const getMovies = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_TMDB_API_URL}/${query}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=ko-KR&page=1`
-        );
-        setMovies(response.data.results);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-      }
-    };
-    getMovies();
-  }, [query]);
-
+  const {
+    data: movies,
+    isLoading,
+    isError,
+  } = useCustomFetch(`/${query}?&language=ko-KR&page=1`);
+  if (isLoading)
+    return (
+      <div>
+        <h1>로딩 중...</h1>
+      </div>
+    );
+  if (isError)
+    return (
+      <div>
+        <h1>에러 입니다.</h1>
+      </div>
+    );
   return (
     <>
       <S.CardList>
-        {movies.map((movie) => (
-          <Card key={movie.id} movie={movie} />
-        ))}
+        {movies?.results.map((movie) => {
+          return <Card key={movie.id} movie={movie} />;
+        })}
       </S.CardList>
     </>
   );

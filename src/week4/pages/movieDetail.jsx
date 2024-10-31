@@ -28,11 +28,12 @@ const MovieDetail = () => {
             style={{
               position: "absolute",
               top: "28%",
+              left: "3%",
               fontStyle: "italic",
               fontSize: "1.5rem",
             }}
           >
-            {movie?.tagline}
+            {movie?.tagline ? `"${movie?.tagline}"` : ""}
           </div>
           <StyledMovieDetailOverview>
             {movie?.overview}

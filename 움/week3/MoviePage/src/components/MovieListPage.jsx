@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const MovieGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); // 최소 180px, 너비에 따라 유동적
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1rem;
   padding: 1rem;
   width: 100%; // MovieGrid가 부모 요소 너비를 꽉 채우도록 설정

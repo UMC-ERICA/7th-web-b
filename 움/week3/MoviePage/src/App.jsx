@@ -8,6 +8,10 @@ import SignupPage from './pages/SignupPage';
 import SearchPage from './pages/SearchPage';
 import MoviesLayout from './components/MoviesLayout';
 import NowPlaying from './pages/NowPlaying';
+import Popular from './pages/Popular'
+import TopRated from './pages/TopRated'
+import Upcoming from './pages/Upcoming'
+import MovieCategories from './components/MovieCategories'
 import styled from 'styled-components';
 
 const RootLayout = styled.div`
@@ -44,10 +48,12 @@ const App = () => (
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/search" element={<SearchPage />} />
-          
-          {/* MoviesLayout를 부모로 설정하고 그 아래에 NowPlaying을 중첩 */}
           <Route path="/movies" element={<MoviesLayout />}>
+            <Route index element={<MovieCategories />} />
             <Route path="now-playing" element={<NowPlaying />} />
+            <Route path="popular" element={<Popular />} />
+            <Route path="top-rated" element={<TopRated />} />
+            <Route path="upcoming" element={<Upcoming />} />
           </Route>
         </Routes>
       </Content>

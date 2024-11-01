@@ -25,7 +25,7 @@ const Sidebar = () => (
     <SidebarLink to="/search">
       <FaSearch style={{ marginRight: '0.5rem' }} /> 찾기
     </SidebarLink>
-    <SidebarLink to="/movies/now-playing">
+    <SidebarLink to="/movies">
       <FaFilm style={{ marginRight: '0.5rem' }} /> 영화
     </SidebarLink>
   </SidebarContainer>

@@ -18,6 +18,8 @@ const SignUpPage = () => {
       .max(16, "비밀번호는 16자 이하여야 합니다.")
       .oneOf([yup.ref("password")], "비밀번호가 일치하지 않습니다."),
     // 비밀번호를 체크할 때
+    birth: yup.date().required("생년월일을 반드시 입력해주세요."),
+    gender: yup.string().required("성별을 반드시 입력해주세요."),
   });
 
   const {
@@ -38,7 +40,10 @@ const SignUpPage = () => {
   const email = watch("email");
   const password = watch("password");
   const passwordCheck = watch("passwordCheck");
-  const isEmptyFields = !email || !password || !passwordCheck;
+  const birth = watch("birth");
+  const gender = watch("gender");
+  const isEmptyFields =
+    !email || !password || !passwordCheck || !birth || !gender;
 
   const onSubmit = (data) => {
     console.log("폼 데이터 제출");
@@ -69,6 +74,10 @@ const SignUpPage = () => {
         {...register("passwordCheck")}
       />
       <p style={{ color: "red" }}>{errors.passwordCheck?.message}</p>
+      <Input type={"date"} {...register("birth")} />
+      <p style={{ color: "red" }}>{errors.birth?.message}</p>
+      <Input type={"text"} {...register("gender")} />
+      <p style={{ color: "red" }}>{errors.gender?.message}</p>
       <Button
         style={{
           backgroundColor:

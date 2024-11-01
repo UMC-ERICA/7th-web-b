@@ -37,13 +37,21 @@ const SignUpPage = () => {
   // 유효성 검사 통과시 → form데이터를 하나의 객체로 만들어서(중요!!)
   // onSubmit 함수의 매개변수로 넘겨줌. → 그 후 onSubmit 함수 실행
 
-  const email = watch("email");
-  const password = watch("password");
-  const passwordCheck = watch("passwordCheck");
-  const birth = watch("birth");
-  const gender = watch("gender");
+  // const email = watch("email");
+  // const password = watch("password");
+  // const passwordCheck = watch("passwordCheck");
+  // const birth = watch("birth");
+  // const gender = watch("gender");
+  const [email, password, passwordCheck, birth, gender] = watch([
+    "email",
+    "password",
+    "passwordCheck",
+    "birth",
+    "gender",
+  ]);
   const isEmptyFields =
     !email || !password || !passwordCheck || !birth || !gender;
+  // 빈 필드가 있는지 확인
 
   const onSubmit = (data) => {
     console.log("폼 데이터 제출");
@@ -51,7 +59,7 @@ const SignUpPage = () => {
   };
   // data는 유효성 검사 통과시 입력한 데이터를 담은 객체
   // data란 이름의 객체로 email, password 키를 가짐
-  console.log("asd", errors.password);
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <h1>회원가입</h1>

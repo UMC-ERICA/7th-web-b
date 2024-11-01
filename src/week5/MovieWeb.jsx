@@ -9,7 +9,7 @@ import SearchPage from "./pages/search";
 import ExplorePage from "./pages/Explore";
 import HomePage from "./pages/Home";
 import MovieDetail from "./pages/movieDetail";
-
+import LoginPageRefator from "./pages/LoginPageRefator";
 const router = createBrowserRouter([
   {
     path: "/",

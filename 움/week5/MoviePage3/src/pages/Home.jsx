@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import MovieCard from '../components/MovieCard';
+import MovieListPage from '../components/MovieListPage';
 
 const NowPlaying = () => {
     const [movies, setMovies] = useState([]);
@@ -14,23 +14,7 @@ const NowPlaying = () => {
             .catch(error => console.error(error));
     }, []);
 
-    return (
-        <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-            gap: '16px',
-            padding: '20px'
-        }}>
-            {movies.map(movie => (
-                <MovieCard
-                    key={movie.id}
-                    title={movie.title}
-                    releaseDate={movie.release_date}
-                    posterPath={movie.poster_path}
-                />
-            ))}
-        </div>
-    );
+    return <MovieListPage movies={movies} />;
 };
 
 export default NowPlaying;

@@ -18,7 +18,10 @@ import styled from 'styled-components';
 const RootLayout = styled.div`
   display: flex;
   padding-top: 60px;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
 `;
 
 const SidebarContainer = styled.div`
@@ -28,12 +31,15 @@ const SidebarContainer = styled.div`
   position: fixed;
   top: 60px;
   left: 0;
+  overflow-y:auto;
 `;
 
 const Content = styled.div`
   margin-left: 200px;
   width: calc(100% - 200px);
   padding: 1rem;
+  overflow-x: hidden;
+  overflow-y:auto;
 `;
 
 const App = () => (
@@ -55,7 +61,7 @@ const App = () => (
             <Route path="popular" element={<Popular />} />
             <Route path="top-rated" element={<TopRated />} />
             <Route path="upcoming" element={<Upcoming />} />
-            <Route path=":movieId" element={<MovieDetail />} /> {/* 영화 상세 페이지 경로 추가 */}
+            <Route path="/movies/:movieId" element={<MovieDetail />} /> {/* 영화 상세 페이지 경로 추가 */}
           </Route>
         </Routes>
       </Content>

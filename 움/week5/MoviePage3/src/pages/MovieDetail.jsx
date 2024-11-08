@@ -74,7 +74,7 @@ const MovieDetail = () => {
   return (
     <Container>
       <Header>
-        <Poster src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={movie.title} />
+        <Poster src={`https://image.tmdb.org/t/p/w300s${movie.poster_path}`} alt={movie.title} />
         <Info>
           <Title>{movie.title}</Title>
           <p>개봉일: {movie.release_date}</p>

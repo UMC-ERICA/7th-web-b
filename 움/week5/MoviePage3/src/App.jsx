@@ -61,7 +61,7 @@ const App = () => (
             <Route path="popular" element={<Popular />} />
             <Route path="top-rated" element={<TopRated />} />
             <Route path="upcoming" element={<Upcoming />} />
-            <Route path="/movies/:movieId" element={<MovieDetail />} /> {/* 영화 상세 페이지 경로 추가 */}
+            <Route path=":movieId" element={<MovieDetail />} />
           </Route>
         </Routes>
       </Content>

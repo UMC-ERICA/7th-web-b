@@ -28,6 +28,7 @@ const MovieListPage = ({ title, movies }) => (
       {movies.map(movie => (
         <MovieCard
             key={movie.id}
+            id={movie.id}
             title={movie.title}
             releaseDate={movie.release_date}
             posterPath={movie.poster_path}

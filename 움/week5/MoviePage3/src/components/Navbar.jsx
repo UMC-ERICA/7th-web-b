@@ -24,6 +24,7 @@ const Logo = styled(Link)`
   &:hover {
     transform: scale(1.1);
     color: #ff007f;
+  }
 `;
 
 const ButtonContainer = styled.div`

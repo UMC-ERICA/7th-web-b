@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import useCustomFetch from "../hooks/useCustomFetch.js";
 import MovieCard from '../components/MovieCard';
+import SearchMovieList from "./SearchMovieList.jsx";
 
 const SearchPage = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -40,23 +41,7 @@ const SearchPage = () => {
         />
         <button onClick={handleSearchMovie}>검색</button>
       </S.SearchContainer>
-      <div>
-        {isLoading && <p>Loading...</p>}
-        {isError && <p>Error occurred!</p>}
-        {movies.length > 0 ? (
-          movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              releaseDate={movie.release_date}
-              posterPath={movie.poster_path}
-            />
-          ))
-        ) : (
-          <p>No results found</p>
-        )}
-      </div>
+      <SearchMovieList/>
     </>
   );
 };

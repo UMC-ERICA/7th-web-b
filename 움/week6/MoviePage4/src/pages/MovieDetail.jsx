@@ -17,14 +17,11 @@ const Header = styled.div`
   gap: 20px;
 `;
 
-const Poster = styled.img`
-  width: 300px;
-  border-radius: 8px;
-`;
-
 const Info = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  max-width: calc(100% - 320px);
 `;
 
 const Title = styled.h2`

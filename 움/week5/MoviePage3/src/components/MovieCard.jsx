@@ -13,8 +13,8 @@ const Card = styled(Link)`
 `;
 
 const Poster = styled.img`
-  width: 100%;
-  height: 250px;
+  width: 168px;
+  height: 240px;
   object-fit: cover;
 `;
 

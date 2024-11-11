@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import axios from "axios";
 const API_URL = "http://localhost:3000/auth";
 
-export const LoginContext = createContext();
+export const AuthContext = createContext();
 
 // 회원가입 요청
 export const signUp = async (data) => {
@@ -21,10 +21,9 @@ export function LoginContextProvider({ children }) {
     try {
       const response = await axios.post(`${API_URL}/login`, data);
 
-      // 로그인 성공 시 accessToken과 refreshToken을 반환
+
       const { accessToken, refreshToken } = response.data;
 
-      // 예시: 토큰을 로컬 스토리지에 저장 (보안을 고려해 다른 방법을 사용할 수도 있음)
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
 
@@ -64,10 +63,10 @@ export function LoginContextProvider({ children }) {
     }
   };
   return (
-    <LoginContext.Provider
+    <AuthContext.Provider
       value={{ isLoggedIn, displayEmail, refreshToken, signUp, login, logout }}
     >
       {children}
-    </LoginContext.Provider>
+    </AuthContext.Provider>
   );
 }

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useContext } from "react";
-import { LoginContext } from "../context/LoginContext";
+import { AuthContext } from "../context/LoginContext";
 
 const Navbar = () => {
-  const { isLoggedIn, displayEmail, logout } = useContext(LoginContext);
+  const { isLoggedIn, displayEmail, logout } = useContext(AuthContext);
   return (
     <StyledNav>
       <LogoButton to="/">Home</LogoButton>
@@ -53,7 +53,7 @@ const ButtonLink = styled(Link)`
   text-decoration: none;
   color: white;
 
-  margin-right: 45px; /* 오른쪽 끝에서 45px만큼 떼어놓기 */
+  margin-right: 30px; /* 오른쪽 끝에서 45px만큼 떼어놓기 */
   &:hover {
     background-color: #f71161; /* Hover 시 변경되는 스타일 */
   }

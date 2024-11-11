@@ -3,9 +3,13 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/LoginContext";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
+  const { isLoggedIn, displayEmail, refreshToken, signUp, login, logout } =
+    useContext(AuthContext);
 
   const schema = yup.object().shape({
     email: yup.string().email().required("이메일을 반드시 입력해주세요."),
@@ -54,11 +58,12 @@ const SignUpPage = () => {
   const onSubmit = async (data) => {
     console.log(data);
     try {
+      const response = await signUp(data);
+      console.log(response.data);
 
-      console.log("회원가입 성공:", data);
-
+      navigate("/login");
     } catch (error) {
-      console.error("회원가입 실패:", error);
+      console.error(error);
     }
   };
   // data는 유효성 검사 통과시 입력한 데이터를 담은 객체

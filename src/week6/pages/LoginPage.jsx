@@ -4,13 +4,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
-import { AuthContext } from "../context/LoginContext";
+import { AuthContext } from "../context/AuthContext";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const { isLoggedIn, displayEmail, refreshToken, signUp, login, logout } =
     useContext(AuthContext);
-    
+
   const schema = yup.object().shape({
     email: yup.string().email().required("이메일을 반드시 입력해주세요."),
     password: yup

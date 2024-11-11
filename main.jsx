@@ -5,10 +5,10 @@ import MovieWebWeek4 from "./src/week4/MovieWeb";
 import MovieWebWeek5 from "./src/week5/MovieWeb";
 import MovieWebWeek6 from "./src/week6/MovieWeb";
 import { TodoContextProvider } from "./src/week1/context/TodoContext";
-import { LoginContextProvider } from "./src/week6/context/LoginContext";
+import { AuthContextProvider } from "./src/week6/context/AuthContext";
 
 createRoot(document.getElementById("root")).render(
-  <LoginContextProvider>
+  <AuthContextProvider>
     <MovieWebWeek6 />
-  </LoginContextProvider>
+  </AuthContextProvider>
 );

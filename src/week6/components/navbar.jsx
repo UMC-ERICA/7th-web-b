@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useContext } from "react";
-import { AuthContext } from "../context/LoginContext";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const { isLoggedIn, displayEmail, logout } = useContext(AuthContext);

@@ -9,7 +9,7 @@ export const signUp = async (data) => {
   return axios.post(`${API_URL}/register`, data);
 };
 
-export function LoginContextProvider({ children }) {
+export function AuthContextProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [displayEmail, setDisplayEmail] = useState("");
 
@@ -20,7 +20,6 @@ export function LoginContextProvider({ children }) {
   const login = async (data) => {
     try {
       const response = await axios.post(`${API_URL}/login`, data);
-
 
       const { accessToken, refreshToken } = response.data;
 

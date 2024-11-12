@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const LoginContainer = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const Input = styled.input`
   width: 300px;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid ${props => props.error ? 'red' : '#ccc'};
+  border: 1px solid ${props => props.$error ? 'red' : '#ccc'};
   border-radius: 5px;
 `;
 
@@ -65,23 +66,24 @@ const LoginPage = () => {
 
   const isFormValid = email && password && !emailError && !passwordError;
 
-  const handleLogin = async() => {
+  const handleLogin = async () => {
     try {
-        const response = await axios.post("http://localhost:3000/auth/login", {
-            email,
-            password,
-        });
+      const response = await axios.post("http://localhost:3000/auth/login", {
+        email,
+        password,
+      });
 
-        // 토큰을 로컬스토리지에 저장
-        localStorage.setItem('accessToken', response.data.accessToken);
-        localStorage.setItem('refreshToken', response.data.refreshToken);
+      // 토큰을 로컬스토리지에 저장
+      localStorage.setItem('accessToken', response.data.accessToken);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
 
-        // 메인 페이지로 이동
-        window.location.href = '/home';
+      // 메인 페이지로 이동
+      window.location.href = '/';
     } catch (error) {
-        console.error('로그인 실패:', error);
+      console.error('로그인 실패:', error);
     }
-};
+  };
+
   return (
     <LoginContainer>
       <h2>로그인 페이지</h2>
@@ -91,7 +93,7 @@ const LoginPage = () => {
         value={email}
         onChange={handleEmailChange}
         onBlur={() => handleBlur('email')}
-        error={touched.email && emailError}
+        $error={touched.email && emailError}
       />
       {touched.email && emailError && <ErrorMessage>{emailError}</ErrorMessage>}
       <Input
@@ -100,7 +102,7 @@ const LoginPage = () => {
         value={password}
         onChange={handlePasswordChange}
         onBlur={() => handleBlur('password')}
-        error={touched.password && passwordError}
+        $error={touched.password && passwordError}
       />
       {touched.password && passwordError && <ErrorMessage>{passwordError}</ErrorMessage>}
       <LoginButton disabled={!isFormValid} onClick={handleLogin}>

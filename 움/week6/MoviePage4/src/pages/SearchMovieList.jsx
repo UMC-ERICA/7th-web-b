@@ -25,7 +25,7 @@ const SearchMovieList = () => {
   if (mq && movies.length === 0) {
     return (
       <div style={{ textAlign: "center", marginTop: "30px" }}>
-        <h2 style={{ color: "white" }}>해당하는 검색어 {mq}에</h2>
+        <h2 style={{ color: "white" }}>검색어 {mq}에</h2>
         <h2 style={{ color: "white" }}>해당하는 데이터가 없습니다.</h2>
       </div>
     );

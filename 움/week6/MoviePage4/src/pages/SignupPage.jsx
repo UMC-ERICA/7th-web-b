@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styled from 'styled-components';
 import axios from 'axios';
-
 
 const schema = yup.object().shape({
   email: yup.string().email('유효한 이메일 형식이어야 합니다.').required('이메일은 필수 입력 항목입니다.'),
@@ -23,19 +23,22 @@ const SignupPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
+  
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
-        await axios.post("http://localhost:3000/auth/register", {
-            email: data.email,
-            password: data.password,
-            passwordCheck: data.passwordCheck
-        });
-        window.location.href = '/login';
+      // 회원가입 요청을 보내는 axios POST 요청
+      await axios.post("http://localhost:3000/auth/register", {
+        email: data.email,
+        password: data.password,
+        passwordCheck: data.passwordCheck
+      });
+      // 회원가입 성공 시 로그인 페이지로 이동
+      navigate('/login');
     } catch (error) {
-        console.error('회원가입 실패:', error);
+      console.error('회원가입 실패:', error);
     }
-    console.log(data); // 모든 input의 value가 {key: value} 형태로 출력
   };
 
   return (

@@ -3,8 +3,6 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 import { deleteTodo, postTodo, getTodoList, patchTodo } from "./apis/todo";
 import { queryClient } from "./main";
-// import Button from "./components/Button"; // Button 컴포넌트 import
-// import Input from "./components/Input"; // Input 컴포넌트 import
 
 function App() {
   const [title, setTitle] = useState("");
@@ -54,7 +52,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault(); // 새로고침 방지
     console.log(title, content);
-    mutate({ title, content });
+    postTodoMutation({ title, content });
   };
 
   return (
@@ -117,112 +115,92 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const Input = styled.input`
-  padding: 10px;
-  border: 1px solid purple;
-  border-radius: 20px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s;
+
+  &:focus {
+    border-color: #6200ea;
+    box-shadow: 0 0 4px rgba(98, 0, 234, 0.5);
+  }
 `;
 
 const Button = styled.button`
-  padding: 20px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #6200ea;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: #3700b3;
+  }
+
+  &:active {
+    background-color: #1c0067;
+  }
 `;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin: 20px 0;
 `;
 
 const TodoContainer = styled.div`
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: s10px;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #d32f2f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #b71c1c;
+    }
+
+    &:active {
+      background-color: #7f0000;
+    }
+  }
 `;
-
-// function App() {
-//     const [todos, setTodos] = useState([
-//         {id: 1, task: '투두 만들어보기'},
-//         {id: 2, task: '희연 혜원 혜윤 건 찬민'}
-//     ]);
-//     const [text, setText] = useState('');
-//     const [editingId, setEditingId] = useState('');
-//     const [editText, setEditText] = useState('');
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//     };
-
-//     // 1. 추가하기
-//     const addTodo = () => {
-//         setTodos((prev) => [
-//             ...prev,
-//             {id: Math.floor(Math.random() * 100) + 2, task: text}
-//         ]);
-//         setText('');
-//     };
-
-//     // 2. 삭제하기
-//     const deleteTodo = (id) => {
-//         setTodos((prev) => prev.filter((item) => item.id !== id));
-//     };
-
-//     // 3. 수정하기
-//     const updateTodo = (id, text) => {
-//         setTodos((prev) =>
-//             prev.map((item) => (item.id === id ? { ...item, task: text } : item))
-//         );
-//         setEditingId('');
-//     };
-
-//     return (
-//         <>
-//             <form onSubmit={handleSubmit}>
-//                 <Input
-//                     value={text}
-//                     onChange={(e) => setText(e.target.value)}
-//                     placeholder="할 일을 입력하세요"
-//                 />
-//                 <Button onClick={addTodo} type="submit">
-//                     할 일 등록
-//                 </Button>
-//             </form>
-
-//             <div className="todo-list">
-//                 {todos.map((todo) => (
-//                     <div key={todo.id} className="todo-item">
-//                         {editingId !== todo.id ? (
-//                             <div className="todo-text">
-//                                 <p>{todo.id}. {todo.task}</p>
-//                             </div>
-//                         ) : (
-//                             <div className="todo-text">
-//                                 <p>{todo.id}. </p>
-//                                 <Input
-//                                     defaultValue={todo.task}
-//                                     onChange={(e) => setEditText(e.target.value)}
-//                                 />
-//                             </div>
-//                         )}
-//                         <Button onClick={() => deleteTodo(todo.id)}>
-//                             삭제하기
-//                         </Button>
-//                         {editingId === todo.id ? (
-//                             <Button onClick={() => updateTodo(editingId, editText)}>
-//                                 수정 완료
-//                             </Button>
-//                         ) : (
-//                             <Button onClick={() => setEditingId(todo.id)}>
-//                                 수정 진행
-//                             </Button>
-//                         )}
-//                     </div>
-//                 ))}
-//             </div>
-//         </>
-//     );
-// }
-
-// export default App;

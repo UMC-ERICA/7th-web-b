@@ -1,0 +1,48 @@
+/* 전체 컨테이너 설정 */
+.container {
+  display: flex;
+  flex-direction: column; /* 자식 요소를 세로로 배치 */
+  padding: 5px;
+}
+
+.inputField {
+  font-style: italic;
+  width: 90%; /* 너비 설정 */
+  max-width: 600px; /* 최대 너비 설정 */
+  margin-left: auto; /* 왼쪽 마진 자동 */
+  margin-right: 10px;
+}
+
+.font{
+  font-style: unset;
+  text-align: center;
+  justify-content: center;
+}
+
+.lists {
+  margin: 10px;
+  padding: 5px;
+  background-color: #979899;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.edit {
+  text-align: center;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

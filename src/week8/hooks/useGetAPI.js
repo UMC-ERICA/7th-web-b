@@ -6,7 +6,7 @@ export default function useGetAPI(url) {
   const { data, isLoading, isError } = useQuery({
     queryKey: [url],
     queryFn: async () => {
-      const response = await AxiosInstance.get(urld);
+      const response = await AxiosInstance.get(url);
       return response.data;
     },
   });
